@@ -7,7 +7,7 @@ export default class SetName extends Component {
 
 	constructor (props) {
 		super(props)
-		this.game_logic = new GameLogic(this.props.game_type, this.update_model.bind(this), this.props.comp_difficulty);
+		this.game_logic = new GameLogic(this.props.game_type, this.update_model.bind(this), this.props.onEndGame, this.props.comp_difficulty);
 	}
 
 	componentDidMount () {

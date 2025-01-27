@@ -7,10 +7,11 @@ import rand_to_fro from '../helpers/rand_to_fro'
 
 export default class GameLogic {
 
-  constructor(game_type, update_model, game_difficulty) {
+  constructor(game_type, update_model, end_game, game_difficulty) {
     this.game_type = game_type;
     this.update_model = update_model;
     this.game_difficulty = game_difficulty;
+    this.end_game = end_game;
     this.win_sets = [
           ['c1', 'c2', 'c3'],
           ['c4', 'c5', 'c6'],
@@ -101,8 +102,8 @@ export default class GameLogic {
     } else {
       this.cell_vals = AI_controller.take_hard_turn(this.refs, this.cell_vals, this.win_sets);
     }
-    this.update_model()
     this.check_turn()
+    this.update_model()
   }
 
   turn_ply_live (cell_id) {
@@ -188,7 +189,6 @@ export default class GameLogic {
 
   end_game () {
     this.socket && this.socket.disconnect();
-
-    props.onEndGame()
+    this.end_game();
   }
 }
