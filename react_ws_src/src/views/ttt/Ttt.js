@@ -71,7 +71,6 @@ export default class Ttt extends Component {
 	}
 
 	saveCompDifficulty (t) {
-		console.log('hello: ' + t)
 		this.state.comp_difficulty = t
 	}
 
